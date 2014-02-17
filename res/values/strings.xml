@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General string -->
+    <string name="app_name">FitApp</string>
+    <string name="title_activity_exercise">Exercise</string>
+    <string name="title_activity_tabata_choice">Tabata Choice</string>
+    <string name="title_activity_hiit_choice">Hiit Choice Activity</string>
+    <string name="title_activity_activity_selection">Activity Selection</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Actions -->
+    <string name="pick_an_activity">Pick an activity</string>
+
+    <!-- Errors -->
+    <string name="no_activity_selected">No Activity Selected</string>
+
+    <!-- Main activity -->
+    <string name="item_quick_start">QUICK START</string>
+    <string name="item_tabata">TABATA</string>
+    <string name="item_hiit">H.I.I.T</string>
+    <string name="item_cross_fit">CROSS FIT</string>
+
+    <!-- Tabata -->
+    <string name="tabata_random">Random</string>
+    <string name="tabata_selection">Selection</string>
+    <string name="tabata_playlist">Playlist</string>
+    <string name="tabata_ramdom_name">Random Tabata</string>
+
+</resources>

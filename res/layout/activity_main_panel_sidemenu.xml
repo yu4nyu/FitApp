@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_activity_panel_sidemenu"
+    android:layout_width="@dimen/main_activity_side_menu_width"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="#ff606060" >
+
+    <LinearLayout
+        android:id="@+id/items_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/item_quick_start"
+            style="@style/SideMenuTextView"
+            android:layout_marginTop="16dip"
+            android:text="@string/item_quick_start" />
+        
+    </LinearLayout>
+
+</ScrollView>
