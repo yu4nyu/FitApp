@@ -5,14 +5,16 @@ import com.yuanyu.fitapp.utils.FragmentSwitcher;
 
 import android.os.Bundle;
 import android.app.ActionBar;
+import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends FragmentActivity implements FragmentSwitcher.OnFragmentSwitchedListener {
+public class MainActivity extends FragmentActivity implements FragmentSwitcher.OnFragmentSwitchedListener, View.OnClickListener {
 
 	private static final String TAG = "MainActivity";
 	
@@ -38,7 +40,7 @@ public class MainActivity extends FragmentActivity implements FragmentSwitcher.O
 		
 		View contentView = findViewById(android.R.id.content);
         mFragmentSwitcher = new FragmentSwitcher(getSupportFragmentManager(), contentView,
-                R.id.main_activity_panel_main_view, R.string.item_quick_start, TAG + "-FragmentSwitcher", ITEMS);
+                R.id.main_activity_panel_main_view, R.id.item_quick_start, TAG + "-FragmentSwitcher", ITEMS);
         mFragmentSwitcher.setOnFragmentSwitchedListener(this);
         //updateTitleFromFragment(); // TODO
         //mFragmentSwitcher.setOnClickListener(this); // TODO
@@ -57,14 +59,12 @@ public class MainActivity extends FragmentActivity implements FragmentSwitcher.O
                 @Override
                 public void onDrawerClosed(View view) {
                     getActionBar().setDisplayHomeAsUpEnabled(true);
-                    //                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
                 }
 
                 /** Called when a drawer has settled in a completely open state. */
                 @Override
                 public void onDrawerOpened(View drawerView) {
                     getActionBar().setDisplayHomeAsUpEnabled(false);
-                    //                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
                 }
             };
 
@@ -77,6 +77,59 @@ public class MainActivity extends FragmentActivity implements FragmentSwitcher.O
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 	}
+	
+	@Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        if (mDrawerToggle != null) {
+            mDrawerToggle.syncState();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (mDrawerToggle != null) {
+            mDrawerToggle.onConfigurationChanged(newConfig);
+        }
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (mDrawerToggle != null && mDrawerToggle.onOptionsItemSelected(item)) {
+                    return true;
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            // registered in onCreate
+            /*case R.id.item_settings:
+                showSettingsActivity();
+                break;*/
+
+                // anything else is initiated from FragmentSwitcher and means
+                // that the user clicked inside the sliding menu
+            default:
+                // layout / drawer are null in case of wide tablet layout
+                if (mDrawerLayout != null && mDrawer != null) {
+                    mDrawerLayout.closeDrawer(mDrawer);
+                }
+                break;
+        }
+    }
 	
 	/*public void onClickQuickStart(View view) {
 		// TODO, use random parameters
