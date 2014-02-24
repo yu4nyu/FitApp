@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.yuanyu.fitapp.ExerciseActivity"
+            android:name="com.yuanyu.fitapp.ui.ExerciseActivity"
             android:label="@string/title_activity_exercise" >
         </activity>
         <activity

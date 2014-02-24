@@ -2,7 +2,6 @@ package com.yuanyu.fitapp.ui;
 
 import java.util.ArrayList;
 
-import com.yuanyu.fitapp.ExerciseActivity;
 import com.yuanyu.fitapp.R;
 import com.yuanyu.fitapp.model.Exercise.ExerciseType;
 

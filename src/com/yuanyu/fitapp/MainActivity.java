@@ -43,7 +43,7 @@ public class MainActivity extends FragmentActivity implements FragmentSwitcher.O
                 R.id.main_activity_panel_main_view, R.id.item_quick_start, TAG + "-FragmentSwitcher", ITEMS);
         mFragmentSwitcher.setOnFragmentSwitchedListener(this);
         //updateTitleFromFragment(); // TODO
-        //mFragmentSwitcher.setOnClickListener(this); // TODO
+        mFragmentSwitcher.setOnClickListener(this);
         
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawer = findViewById(R.id.main_activity_panel_sidemenu);

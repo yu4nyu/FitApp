@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.yuanyu.fitapp.model.GifLoader;
 import com.yuanyu.fitapp.model.Exercise.ExerciseType;
+import com.yuanyu.fitapp.ui.ExerciseActivity;
 
 import android.os.Bundle;
 import android.app.Activity;

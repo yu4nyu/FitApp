@@ -1,4 +1,4 @@
-package com.yuanyu.fitapp;
+package com.yuanyu.fitapp.ui;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.yuanyu.fitapp.R;
+import com.yuanyu.fitapp.R.id;
+import com.yuanyu.fitapp.R.layout;
+import com.yuanyu.fitapp.R.string;
 import com.yuanyu.fitapp.model.Common;
 import com.yuanyu.fitapp.model.Exercise;
 import com.yuanyu.fitapp.model.Exercise.ExerciseType;
@@ -17,6 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -230,18 +235,23 @@ public class ExerciseActivity extends Activity {
 		String file = mExercise.getGifList().get(position);
 		byte[] gifByteArray = null;
 		try {
-			InputStream inputStream = getAssets().open(Common.GIF_DIRECTORY_NAME + "/" +file);
-			gifByteArray = new byte[inputStream.available()];
+			String path = Common.GIF_DIRECTORY_NAME + "/" + file;
+			InputStream inputStream = getAssets().open(path);
+			int size = inputStream.available();
+			gifByteArray = new byte[size];//inputStream.available()];
 			inputStream.read(gifByteArray);
+			inputStream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		//String fileName = Common.GIF_DIRECTORY_NAME + "/" + file;
 		mGifView.setGifImage(gifByteArray);
+		//mGifView.setGifImage(fileName);
 		mGifView.setLoopNumber(Integer.MAX_VALUE);
 	}
 	
 	/**
-	 * @param 应用Timer的时长，这个时长结束之后该Timer会被取消
+	 * @param 应锟斤拷Timer锟斤拷时锟斤拷锟斤拷锟斤拷锟绞憋拷锟斤拷锟斤拷锟街拷锟斤拷Timer锟结被取锟斤拷
 	 */
 	private void startTimer(int time) {
 		long interval = time * 1000 / 360; // Interval for increment 1 degree of progress wheel

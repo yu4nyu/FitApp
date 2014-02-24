@@ -18,6 +18,24 @@
             android:layout_marginTop="16dip"
             android:text="@string/item_quick_start" />
         
+        <TextView
+            android:id="@+id/item_tabata"
+            style="@style/SideMenuTextView"
+            android:layout_marginTop="16dip"
+            android:text="@string/item_tabata" />
+        
+        <TextView
+            android:id="@+id/item_hiit"
+            style="@style/SideMenuTextView"
+            android:layout_marginTop="16dip"
+            android:text="@string/item_hiit" />
+        
+        <TextView
+            android:id="@+id/item_cross_fit"
+            style="@style/SideMenuTextView"
+            android:layout_marginTop="16dip"
+            android:text="@string/item_cross_fit" />
+        
     </LinearLayout>
 
 </ScrollView>
